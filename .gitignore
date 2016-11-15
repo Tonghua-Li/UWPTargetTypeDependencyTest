@@ -3,3 +3,6 @@
 ################################################################################
 
 /MvvmLazyControl/bin/x86/Debug
+/MvvmLazyControl/obj
+/MvvmLazyControl/project.lock.json
+/MvvmLazyControl/MvvmLazyControl.csproj.user
