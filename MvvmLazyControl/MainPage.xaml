@@ -1,0 +1,40 @@
+﻿<Page x:Class="MvvmLazyControl.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:converters="using:Microsoft.Toolkit.Uwp.UI.Converters"
+      xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:local="using:MvvmLazyControl"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:viewModel="using:MvvmLazyControl.ViewModel"
+      DataContext="{Binding Main,
+                            Source={StaticResource Locator}}"
+      mc:Ignorable="d">
+    <Page.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+
+    </Page.Resources>
+    <Grid>
+        <!--<VisualStateManager.VisualStateGroups >
+            <VisualStateGroup>
+                <VisualState x:Name="s">
+                    <VisualState.Setters>
+                        <Setter Target="Mi"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>-->
+        <StackPanel x:Name="StackPanel" Background="Green">
+            <Button Command="{x:Bind Vm.LoadLazyViewCmd}" Content="Load Lazy View" />
+            <Button Click="ButtonBase_OnClick" Content="Click Event Lazy View" />
+        </StackPanel>
+        <local:LazyView x:Name="LazyView2"
+                        Margin="40"
+                        x:DeferLoadStrategy="Lazy" />
+    </Grid>
+
+    <interactivity:Interaction.Behaviors>
+        <local:LazyIWorkVmBehavior TargetType="local:DerivedUserControl" />
+    </interactivity:Interaction.Behaviors>
+</Page>
